@@ -53,7 +53,8 @@ session_start();
                 ?>
                 <tr>
                 <?php
-                while($row = mysqli_fetch_assoc($result)){
+                //while($row = mysqli_fetch_assoc($result)){
+                foreach($result as $row){
                   ?><th scope="row"><?php echo $row["ename"]; ?></th>
                   <td><?php echo $row["date"]; ?></td>
                   <td><?php echo $row["location"]; ?></td>
@@ -63,7 +64,7 @@ session_start();
                   <?php
                 }
 
-                $result->free();
+                $result->closeCursor();
                 //$database->finish();
 
                  ?>

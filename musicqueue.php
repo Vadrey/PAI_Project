@@ -110,7 +110,8 @@ if (isset($_REQUEST['submit'])) {
                       ?>
                       <tr>
                         <?php
-                        while($row = mysqli_fetch_assoc($result)){
+                        //while($row = mysqli_fetch_assoc($result)){
+                        foreach($result as $row){
                           ?>
                           <th scope="row"><?php echo $row["id_music"]; ?></th>
                           <td><?php echo $row["performer"]; ?></td>
@@ -124,7 +125,7 @@ if (isset($_REQUEST['submit'])) {
                     <?php
                   }
 
-                  $result->free();
+                  $result->closeCursor();
                   //$database->finish();
 
                    ?>

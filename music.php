@@ -55,7 +55,8 @@ session_start();
                 ?>
                 <tr>
                 <?php
-                while($row = mysqli_fetch_assoc($result)){
+                //while($row = mysqli_fetch_assoc($result)){
+                foreach($result as $row){
                   ?><th scope="row"><?php echo $row["performer"]; ?></th>
                   <td><?php echo $row["title"]; ?></td>
                   <td><?php echo $row["year"]; ?></td>
@@ -65,7 +66,7 @@ session_start();
                   <?php
                 }
 
-                $result->free();
+                $result->closeCursor();
                 //$database->finish();
 
                  ?>

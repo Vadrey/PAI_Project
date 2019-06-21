@@ -137,8 +137,8 @@ if (isset($_REQUEST['submit'])) {
                   ?>
 
             <br>
-            <a href="javascript:scroll(0,0);">Wróć na górę strony</a>
-            <br>
+                <a href="javascript:scroll(0,0);">Wróć na górę strony</a>
+                <br>
 
         </div>
         </div>

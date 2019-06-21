@@ -1,16 +1,21 @@
 <?php
+include_once 'logic/Database.php';
 
 class User{
 
   protected $db;
 
   public function __construct(){
-    $this->db = new mysqli('localhost', 'root', '', 'bstage');
+    //$this->db = new mysqli('localhost', 'root', '', 'bstage');
 
-    if(mysqli_connect_errno()) {
+    $this->db = new Database();
+
+    /*if(mysqli_connect_errno()) {
 	     echo "Error: Could not connect to database.";
 	     exit;
 	  }
+    */
+
   }
 
   /*** for registration process ***/
@@ -44,7 +49,8 @@ class User{
     //if the username is not in db then insert to the table
     if ($count_row == 0){
       $sql1="INSERT INTO user SET username='$username', password='$password', name='$name', surname='$surname', email='$email', id_role = (SELECT id_role FROM role WHERE id_role=2)";
-      $result = mysqli_query($this->db,$sql1) or die(mysqli_connect_errno()."Data cannot inserted");
+      //$result = mysqli_query($this->db,$sql1) or die(mysqli_connect_errno()."Data cannot inserted");
+      $result = $this->db->query($sql1) or die("Smth");
           return $result;
     }
     else {
@@ -59,9 +65,9 @@ class User{
     $sql2="SELECT id_user, username, id_role from user WHERE username='$username' and password='$password'";
 
     //checking if the username is available in the table
-    $result = mysqli_query($this->db,$sql2);
-    $user_data = mysqli_fetch_array($result);
-    $count_row = $result->num_rows;
+    $result = $this->db->query($sql2);
+    $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
+    $count_row = $result->rowCount();
 
     if ($count_row == 1) {
       // this login var will use for the session thing
@@ -78,8 +84,8 @@ class User{
 
     public function getColumn($uid,$col){
       $sql="SELECT $col FROM user WHERE id_user = $uid";
-      $result = mysqli_query($this->db,$sql);
-      $user_data = mysqli_fetch_array($result);
+      $result = $this->db->query($sql);
+      $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
       //echo $user_data['fullname'];
     }
 

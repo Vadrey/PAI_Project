@@ -91,7 +91,8 @@ if (isset($_REQUEST['submit'])) {
                   ?>
                   <tr>
                   <?php
-                  while($row = mysqli_fetch_assoc($result)){
+                  //while($row = mysqli_fetch_assoc($result)){
+                  foreach($result as $row){
                     ?><th scope="row"><?php echo $row["username"]; ?></th>
                     <td><?php echo $row["name"]; ?></td>
                     <td><?php echo $row["surname"]; ?></td>
@@ -101,7 +102,7 @@ if (isset($_REQUEST['submit'])) {
                     <?php
                   }
 
-                  $result->free();
+                  $result->closeCursor();
                   //$database->finish();
 
                    ?>
