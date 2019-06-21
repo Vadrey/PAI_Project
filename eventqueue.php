@@ -103,28 +103,31 @@ if (isset($_REQUEST['submit'])) {
                     <tbody>
                       <?php
                       include_once 'logic/Database.php';
-                      $database = new Database();
-                      $q ="SELECT * FROM eventq";
-                      $result = $database->query($q);
+                      include_once 'logic/EventQTablePrinter.php';
+                      //$database = new Database();
+                      //$q ="SELECT * FROM eventq";
+                      //$result = $database->query($q);
+                      $tablePrinter = new EventQTablePrinter("SELECT * FROM eventq");
+                      $tablePrinter->printTable();
                       ?>
                       <tr>
                         <?php
                         //while($row = mysqli_fetch_assoc($result)){
-                        foreach($result as $row){
-                          ?>
-                          <th scope="row"><?php echo $row["id_event"]; ?></th>
-                          <td><?php echo $row["ename"]; ?></td>
-                          <td><?php echo $row["date"]; ?></td>
-                          <td><?php echo $row['add_date']; ?></td>
-                          <td><?php echo $row['location']; ?></td>
-                          <td><?php echo $row['description']; ?></td>
-                          <td><?php echo $row['id_whoadd']; ?></td></td>
-                        </tr>
+//                        foreach($result as $row){
+//                          ?>
+<!--                          <th scope="row">--><?php //echo $row["id_event"]; ?><!--</th>-->
+<!--                          <td>--><?php //echo $row["ename"]; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row["date"]; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['add_date']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['location']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['description']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['id_whoadd']; ?><!--</td></td>-->
+<!--                        </tr>-->
                     <?php
-                  }
+                  //}
 
                   //$result->free();
-                    $result->closeCursor();
+                    //$result->closeCursor();
                   //$database->finish();
 
                    ?>

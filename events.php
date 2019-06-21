@@ -47,24 +47,28 @@ session_start();
   </thead>
   <tbody>      <?php
                 include_once 'logic/Database.php';
-                $database = new Database();
-                $q ="SELECT * FROM eventy";
-                $result = $database->query($q);
-                ?>
-                <tr>
-                <?php
-                //while($row = mysqli_fetch_assoc($result)){
-                foreach($result as $row){
-                  ?><th scope="row"><?php echo $row["ename"]; ?></th>
-                  <td><?php echo $row["date"]; ?></td>
-                  <td><?php echo $row["location"]; ?></td>
-                  <td><?php echo $row['description']; ?></td>
-                  <td><?php echo $row['username']; ?></td></td>
-                  </tr>
-                  <?php
-                }
+                include_once 'logic/EventTablePrinter.php';
 
-                $result->closeCursor();
+                $tablePrinter = new EventTablePrinter("SELECT * FROM eventy");
+                $tablePrinter->printTable();
+//                $database = new Database();
+//                $q ="SELECT * FROM eventy";
+//                $result = $database->query($q);
+//                ?>
+<!--                <tr>-->
+<!--                --><?php
+//                //while($row = mysqli_fetch_assoc($result)){
+//                foreach($result as $row){
+//                  ?><!--<th scope="row">--><?php //echo $row["ename"]; ?><!--</th>-->
+<!--                  <td>--><?php //echo $row["date"]; ?><!--</td>-->
+  <!--                  <td>--><?php //echo $row["location"]; ?><!--</td>-->
+  <!--                  <td>--><?php //echo $row['description']; ?><!--</td>-->
+  <!--                  <td>--><?php //echo $row['username']; ?><!--</td></td>-->
+<!--                  </tr>-->
+<!--                  --><?php
+//                }
+//
+//                $result->closeCursor();
                 //$database->finish();
 
                  ?>

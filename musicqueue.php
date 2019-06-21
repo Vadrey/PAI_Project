@@ -104,28 +104,31 @@ if (isset($_REQUEST['submit'])) {
                     <tbody>
                       <?php
                       include_once 'logic/Database.php';
-                      $database = new Database();
-                      $q ="SELECT * FROM muzykaq";
-                      $result = $database->query($q);
+                      include_once 'logic/MusicQTablePrinter.php';
+//                      $database = new Database();
+//                      $q ="SELECT * FROM muzykaq";
+//                      $result = $database->query($q);
+                      $musicPrinter = new MusicQTablePrinter("SELECT * FROM muzykaq");
+                      $musicPrinter->printTable();
                       ?>
                       <tr>
                         <?php
                         //while($row = mysqli_fetch_assoc($result)){
-                        foreach($result as $row){
-                          ?>
-                          <th scope="row"><?php echo $row["id_music"]; ?></th>
-                          <td><?php echo $row["performer"]; ?></td>
-                          <td><?php echo $row["title"]; ?></td>
-                          <td><?php echo $row['year']; ?></td>
-                          <td><?php echo $row['ftype']; ?></td>
-                          <td><?php echo $row['gname']; ?></td>
-                          <td><?php echo $row['add_date']; ?></td>
-                          <td><?php echo $row['username']; ?></td></td>
-                        </tr>
+//                        foreach($result as $row){
+//                          ?>
+<!--                          <th scope="row">--><?php //echo $row["id_music"]; ?><!--</th>-->
+<!--                          <td>--><?php //echo $row["performer"]; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row["title"]; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['year']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['ftype']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['gname']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['add_date']; ?><!--</td>-->
+<!--                          <td>--><?php //echo $row['username']; ?><!--</td></td>-->
+<!--                        </tr>-->
                     <?php
-                  }
+                 // }
 
-                  $result->closeCursor();
+                  //$result->closeCursor();
                   //$database->finish();
 
                    ?>

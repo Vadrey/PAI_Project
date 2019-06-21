@@ -49,24 +49,27 @@ session_start();
                   <tbody>
                 <?php
                 include_once 'logic/Database.php';
-                $database = new Database();
-                $q ="SELECT * FROM muzyka";
-                $result = $database->query($q);
+                include_once 'logic/MusicTablePrinter.php';
+//                $database = new Database();
+//                $q ="SELECT * FROM muzyka";
+//                $result = $database->query($q);
+                $musicPrinter = new MusicTablePrinter("SELECT * FROM muzyka");
+                $musicPrinter->printTable();
                 ?>
                 <tr>
                 <?php
                 //while($row = mysqli_fetch_assoc($result)){
-                foreach($result as $row){
-                  ?><th scope="row"><?php echo $row["performer"]; ?></th>
-                  <td><?php echo $row["title"]; ?></td>
-                  <td><?php echo $row["year"]; ?></td>
-                  <td><?php echo $row['ftype']; ?></td>
-                  <td><?php echo $row['gname']; ?></td></td>
-                  </tr>
+//                foreach($result as $row){
+//                  ?><!--<th scope="row">--><?php //echo $row["performer"]; ?><!--</th>-->
+<!--                  <td>--><?php //echo $row["title"]; ?><!--</td>-->
+<!--                  <td>--><?php //echo $row["year"]; ?><!--</td>-->
+<!--                  <td>--><?php //echo $row['ftype']; ?><!--</td>-->
+<!--                  <td>--><?php //echo $row['gname']; ?><!--</td></td>-->
+<!--                  </tr>-->
                   <?php
-                }
+                //}
 
-                $result->closeCursor();
+                //$result->closeCursor();
                 //$database->finish();
 
                  ?>
