@@ -66,7 +66,7 @@ class User{
 
     //checking if the username is available in the table
     $result = $this->db->query($sql2);
-    $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
+    $user_data = $result->fetch(/*PDO::FETCH_ASSOC*/);
     $count_row = $result->rowCount();
 
     if ($count_row == 1) {
@@ -85,7 +85,7 @@ class User{
     public function getColumn($uid,$col){
       $sql="SELECT $col FROM user WHERE id_user = $uid";
       $result = $this->db->query($sql);
-      $user_data = $result->fetchAll(PDO::FETCH_ASSOC);
+      $user_data = $result->fetch(/*PDO::FETCH_ASSOC*/);
       //echo $user_data['fullname'];
     }
 
